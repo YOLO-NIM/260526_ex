@@ -43,8 +43,27 @@ console.log(`'cc' in o`, "cc" in o);
 console.log(map.has("aa"));
 console.log(map.has("cc"));
 
+// 바로 get of 에 넣을 수 없음. 변환
+for (const c of Object.entries(o)) {
+  console.log(c);
+}
+
+// delete o[프로퍼티명]
+map.delete("aa"); // 삭제하는 것도 delete로 따로 있다
+console.log(map);
+
+// 객체였으면 Object.*의 외부 유틸리티를 썼어야하는...
+console.log(map.entries());
+console.log(map.keys());
+console.log(map.values());
+
 console.log(map);
 for (const c of map) {
   // 변환과정 등을 거치지 않아도
   // iterable하다
+  console.log(c);
 }
+
+// 객체는 스스로 길이 관련된 것이 X
+console.log(Object.values(o).length);
+console.log(map.size); // Map은 size라는 내장 속성
