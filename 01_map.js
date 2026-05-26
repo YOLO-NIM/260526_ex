@@ -28,6 +28,7 @@ o.bb = 12345; // 식별자 규칙을 위반하지 않는(공백, 특수문자) �
 // map.set(키, 값)
 map.set("aa", 1234);
 map.set("bb", 12345);
+// 없으면 새로운 값을 넣고, 있으면 덮어씌우는...
 
 // CRUD <- 다 거침
 
@@ -49,7 +50,7 @@ for (const c of Object.entries(o)) {
 }
 
 // delete o[프로퍼티명]
-map.delete("aa"); // 삭제하는 것도 delete로 따로 있다
+map.delete("aa"); // 삭제하는 것도 delete로 따로 있다 허나 잘 쓰이지는 않음
 console.log(map);
 
 // 객체였으면 Object.*의 외부 유틸리티를 썼어야하는...
@@ -67,3 +68,17 @@ for (const c of map) {
 // 객체는 스스로 길이 관련된 것이 X
 console.log(Object.values(o).length);
 console.log(map.size); // Map은 size라는 내장 속성
+
+const m = new Map();
+m.set("counter", 0); // 이게 있어서 초기값이 있다면
+if (m.has("counter") && typeof m.get("counter") == "number") {
+  m.set("counter", m.get("counter") + 1);
+} else {
+  m.set("counter", 0);
+}
+console.log(m);
+
+// 2. map(자료구조로서의) vs. map(함수로서의)
+const mm = new Map();
+[].map();
+// Array.from(mm.entries().map());
